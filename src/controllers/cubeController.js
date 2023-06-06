@@ -18,7 +18,7 @@ router.post('/create', async (req, res) => {
 
     // запазваме на данните
     try {
-        await cubeService.save(cube);  // викаме SAVE функцията от SERVICE папката и подаваме куба от заявката
+        await cubeService.create(cube);  // викаме create функцията от SERVICE папката и подаваме куба от заявката
         res.redirect('/');
     } catch (error) {
         res.status(400).send(error);
@@ -26,8 +26,8 @@ router.post('/create', async (req, res) => {
 });
 
 // рутер за details page
-router.get('/details/:id', (req, res) => {
-    const cube = cubeService.getOne(req.params.id)  // взимаме ид-то от параметрите на request
+router.get('/details/:id', async (req, res) => {
+    const cube = await cubeService.getOne(req.params.id).lean()  // взимаме ид-то от параметрите на request
     res.render('details', { cube });  // взимаме конкретния куб и рендерираме детайлите му
 });
 
