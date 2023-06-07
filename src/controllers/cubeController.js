@@ -32,11 +32,20 @@ router.get('/details/:id', async (req, res) => {
     res.render('details', { cube });  // взимаме конкретния куб и рендерираме детайлите му
 });
 
-router.get('/:id/attach-accessory', async (req, res) => {
-    const cube = await cubeService.getOne(req.params.id).lean();
+router.get('/:cubeId/attach-accessory', async (req, res) => {
+    const cube = await cubeService.getOne(req.params.cubeId).lean();
     const accessories = await accessoryService.getAll().lean();
 
     res.render('accessory/attach', { cube, accessories });
 });
+
+router.post('/:cubeId/attach-accessory', async (req, res) => {
+    const accessoryId = req.body.accessory;
+    const cubeId = req.params.cubeId; 
+    await cubeService.attachAccessory(cubeId, accessoryId);
+
+    res.redirect(`/cube/details/${req.params.cubeId}`)
+});
+
 
 module.exports = router;

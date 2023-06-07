@@ -15,7 +15,7 @@ const accessorySchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        maxLength: [300, 'Too large description'],
+        maxLength: [3300, 'Too large description'],
         required: true
         // TODO relation 
     },
