@@ -8,7 +8,8 @@ router.get('/create', (req, res) => {
 
 router.post('/create', async (req, res) => {
 
-    accessoryService.create(req.body);
+    let requestData = req.body
+    accessoryService.create(requestData);
 
     res.redirect('/');
 });

@@ -18,7 +18,15 @@ const accessorySchema = new mongoose.Schema({
         maxLength: 120,
         required: true
         // TODO relation 
-    }
+    },
+    cubes: [                         // масив от множество ObjectID-та които сочат към КУБ модела
+        {                        
+            type: mongoose.Types.ObjectId,  
+            ref: 'Cube',                  
+
+        }
+    ]
+
 });
 
 const Accessory = mongoose.model("Accessory", accessorySchema);

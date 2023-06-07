@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Accessory = require('./Accessory');
 
 const cubeSchema = new mongoose.Schema({
- 
+
     name: {
         type: String,
         required: true
@@ -21,7 +22,16 @@ const cubeSchema = new mongoose.Schema({
         required: true,
         min: 1,
         max: 6,
-    }
+    },
+    accessories: [                                  // един куб може да се свърже с множество аксесоари
+                                                    // масив от ObjectId-та които ще имат референция към множество аксесоари
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Accessory'
+        }
+    ]
+
+
 });
 
 const Cube = mongoose.model('Cube', cubeSchema);
