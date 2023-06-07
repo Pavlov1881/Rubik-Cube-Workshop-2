@@ -13,7 +13,7 @@ return cubes
 };
 
 // приема cubeId и връща от масива с кубовете cubeId
-exports.getOne = (cubeId) => Cube.findById(cubeId)
+exports.getOne = (cubeId) => Cube.findById(cubeId).populate('accessories');
 
 // експортираме SAVE функция, която да ползваме в контролера
 exports.create = (cube) => {
