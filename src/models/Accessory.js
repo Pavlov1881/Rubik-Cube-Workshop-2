@@ -15,14 +15,14 @@ const accessorySchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        maxLength: 120,
+        maxLength: [300, 'Too large description'],
         required: true
         // TODO relation 
     },
     cubes: [                         // масив от множество ObjectID-та които сочат към КУБ модела
-        {                        
-            type: mongoose.Types.ObjectId,  
-            ref: 'Cube',                  
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Cube',
 
         }
     ]
