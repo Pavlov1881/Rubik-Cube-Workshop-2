@@ -24,7 +24,7 @@ const cubeSchema = new mongoose.Schema({
         max: 6,
     },
     accessories: [                                  // един куб може да се свърже с множество аксесоари
-                                                    // масив от ObjectId-та които ще имат референция към множество аксесоари
+        // масив от ObjectId-та които ще имат референция към множество аксесоари
         {
             type: mongoose.Types.ObjectId,
             ref: 'Accessory'
