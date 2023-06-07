@@ -31,8 +31,9 @@ router.get('/details/:id', async (req, res) => {
     res.render('details', { cube });  // взимаме конкретния куб и рендерираме детайлите му
 });
 
-router.get('/:id/attach-accessory', (req, res) => {
-    res.render('accessory/attach');
+router.get('/:id/attach-accessory', async (req, res) => {
+    const cube = await cubeService.getOne(req.params.id).lean();
+    res.render('accessory/attach', { cube });
 });
 
 module.exports = router;
