@@ -7,8 +7,8 @@ const Accessory = require('../models/Accessory');
 
 // залагаме default параметри за да показва всички кубове и чейнваме филтри за опциите за търсене
 exports.getAll = async (search = '', fromInput, toInput) => {
-let cubes = await Cube.find().lean()
-return cubes
+    let cubes = await Cube.find().lean()
+    return cubes
 
 };
 
